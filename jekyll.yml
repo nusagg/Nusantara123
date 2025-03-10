@@ -1,0 +1,33 @@
+name: Deploy Jekyll
+
+on:
+  push:
+    branches:
+      - main  # Sesuaikan dengan branch utama repo kamu
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'  # Sesuaikan dengan versi terbaru
+
+      - name: Install Jekyll Dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Build Jekyll Site
+        run: bundle exec jekyll build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: _site
