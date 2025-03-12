@@ -1,12 +1,12 @@
 source "https://rubygems.org"
 
-gem "github-pages", group: :jekyll_plugins
+gem "jekyll", "~> 4.3"
+gem "minima"
+gem "jekyll-feed"
+gem "jekyll-seo-tag"
+gem "jekyll-sitemap"
 
 group :jekyll_plugins do
-  gem "jekyll", "~> 4.3"
-  gem "minima"
-  gem "jekyll-feed"
-  gem "jekyll-seo-tag"
-  gem "jekyll-sitemap"
   gem "webrick"
+  gem "github-pages", "~> 227", require: false
 end
